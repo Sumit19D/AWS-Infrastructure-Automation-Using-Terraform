@@ -115,6 +115,6 @@ http://(EC2-PUBLIC-IP)
 
 To avoid unnecessary AWS charges:
 ```
-terraform destroy
+terraform destroy --auto-approve
 ```
 
