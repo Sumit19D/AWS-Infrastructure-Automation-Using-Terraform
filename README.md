@@ -75,40 +75,44 @@ Before deploying this project, ensure the following tools and configurations are
 
 1️⃣ Clone the Repository
 
-* git clone https://github.com/Sumit19D/AWS-Infrastructure-Automation-with-Terraform.git
-
-* cd AWS-Infrastructure-Automation-with-Terraform
+```
+git clone https://github.com/Sumit19D/AWS-Infrastructure-Automation-with-Terraform.git
+cd AWS-Infrastructure-Automation-with-Terraform
+```
 
 2️⃣ Connect to AWS
-
-* aws configure
+```
+aws configure
+```
 
 3️⃣ Initialize Terraform
-
-* terraform init
+```
+terraform init
+```
 
 4️⃣ Validate the Configuration
-
-* terraform validate
+```
+terraform validate
+```
 
 5️⃣ Apply Terraform Configuration
-
-* terraform apply --auto-approve
-
+```
+terraform apply --auto-approve
+```
 
 ## 🌐 Access the Application
 
 Once deployment is complete, Terraform outputs the public IP of the EC2 instance.
 
 Access the static website in a browser:
-
-* http://(EC2-PUBLIC-IP)
-
+```
+http://(EC2-PUBLIC-IP)
+```
 
 ## 🧹 Clean Up Resources
 
 To avoid unnecessary AWS charges:
-
-* terraform destroy
-
+```
+terraform destroy
+```
 
