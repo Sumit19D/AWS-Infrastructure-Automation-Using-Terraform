@@ -25,6 +25,7 @@ The goal of this project is to showcase hands-on experience with Infrastructure 
 
 ## 📂 Project Structure
 
+```
 .
 
 ├── main.tf
@@ -36,7 +37,7 @@ The goal of this project is to showcase hands-on experience with Infrastructure 
 ├── provider.tf
 
 └── README.md
-
+```
 
 ## ⚙️ Infrastructure Automation Details
 
