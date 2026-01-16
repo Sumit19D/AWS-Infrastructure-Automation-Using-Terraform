@@ -36,6 +36,7 @@ The goal of this project is to showcase hands-on experience with Infrastructure 
 
 * NGINX is installed and configured using Terraform user_data
 
+
 ## 📋 Prerequisites
 
 Before deploying this project, ensure the following tools and configurations are available on your system:
@@ -49,6 +50,7 @@ Before deploying this project, ensure the following tools and configurations are
 * Verify installation:
   * terraform --version
 
+
 🔹 2️⃣ AWS CLI
 
 * AWS CLI is required for authentication and interaction with AWS services.
@@ -57,6 +59,7 @@ Before deploying this project, ensure the following tools and configurations are
 
 * Verify installation:
   * aws --version
+
 
 ## 🚀 Deployment Steps
 
@@ -82,13 +85,15 @@ Before deploying this project, ensure the following tools and configurations are
 
 * terraform apply --auto-approve
 
+
 ## 🌐 Access the Application
 
 Once deployment is complete, Terraform outputs the public IP of the EC2 instance.
 
 Access the static website in a browser:
 
-* http://(EC2-PUBLIC-IP)
+* http://<EC2-PUBLIC-IP>
+
 
 ## 🧹 Clean Up Resources
 
