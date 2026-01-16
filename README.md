@@ -23,6 +23,20 @@ The goal of this project is to showcase hands-on experience with Infrastructure 
 
 * **Version Control:** Git & GitHub
 
+## 📂 Project Structure
+
+.
+
+├── main.tf
+
+├── variables.tf
+
+├── outputs.tf
+
+├── provider.tf
+
+└── README.md
+
 
 ## ⚙️ Infrastructure Automation Details
 
