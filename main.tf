@@ -1,6 +1,8 @@
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
   region = var.aws_region
+  enable_dns_support   = true
+  enable_dns_hostnames = true
 
   tags = {
     Name = "my-vpc"
@@ -17,7 +19,7 @@ resource "aws_internet_gateway" "gw" {
 
 resource "aws_subnet" "public" {
   vpc_id = aws_vpc.main.id
-  cidr_block = var.subnet_cidr
+  cidr_block = var.public_subnet_cidr
   availability_zone = "${var.aws_region}a"
   map_public_ip_on_launch = true
 
@@ -44,7 +46,7 @@ resource "aws_route_table_association" "public" {
   route_table_id = aws_route_table.public.id
 }
 
-resource "aws_security_group" "sg" {
+resource "aws_security_group" "public_sg" {
   vpc_id = aws_vpc.main.id
 
   ingress {
@@ -76,7 +78,7 @@ ingress {
   }
 
   tags = {
-    Name = "sg"
+    Name = "public_sg"
   }
 }
 
@@ -85,10 +87,10 @@ resource "aws_instance" "test" {
   instance_type = var.instance_type
   key_name = var.key_name
   subnet_id = aws_subnet.public.id
-  vpc_security_group_ids = [aws_security_group.sg.id]
+  vpc_security_group_ids = [aws_security_group.public_sg.id]
 
   tags = {
-    Name = "My-EC2"
+    Name = "My-Public-EC2"
   }
 
   user_data = <<-EOF
@@ -99,4 +101,48 @@ resource "aws_instance" "test" {
               sudo systemctl enable nginx
               echo "WelCome" > /var/www/html/index.html
               EOF
+}
+
+resource "aws_subnet" "private" {
+  vpc_id = aws_vpc.main.id
+  cidr_block = var.private_subnet_cidr
+  availability_zone = "${var.aws_region}a"
+
+  tags = {
+    Name = "my-private-subnet"
+  }
+}
+
+resource "aws_security_group" "private_sg" {
+  vpc_id = aws_vpc.main.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+ tags = {
+    Name = "private_sg"
+  }
+}
+
+resource "aws_instance" "private_ec2" {
+  ami = var.ami_id
+  instance_type = var.instance_type
+  key_name = var.key_name
+  subnet_id = aws_subnet.private.id
+  vpc_security_group_ids = [aws_security_group.private_sg.id]
+
+  tags = {
+    Name = "My-Private-EC2"
+  }
 }
