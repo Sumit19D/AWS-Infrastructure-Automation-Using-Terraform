@@ -99,7 +99,7 @@ resource "aws_instance" "test" {
               sudo apt-get install nginx -y
               sudo systemctl start nginx
               sudo systemctl enable nginx
-              echo "WelCome" > /var/www/html/index.html
+              echo "WelCome To My World Peers" > /var/www/html/index.html
               EOF
 }
 
