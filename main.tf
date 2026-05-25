@@ -95,8 +95,8 @@ resource "aws_instance" "test" {
 
   user_data = <<-EOF
               #!/bin/bash
-              sudo apt update -y
-              sudo apt install nginx -y
+              sudo apt-get update -y
+              sudo apt-get install nginx -y
               sudo systemctl start nginx
               sudo systemctl enable nginx
               echo "WelCome" > /var/www/html/index.html
