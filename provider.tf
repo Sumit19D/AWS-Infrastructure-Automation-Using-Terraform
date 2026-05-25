@@ -1,3 +1,3 @@
-provider "aws" {
+rovider "aws" {
   region = var.aws_region
 }
