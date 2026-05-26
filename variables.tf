@@ -37,5 +37,5 @@ variable "ami_id" {
 variable "key_name" {
   description = "The name of the SSH key pair"
   type        = string
-  default     = "Terraform"  # Create this in AWS console first
+  default     = "netflix"  # Create this in AWS console first
 }
